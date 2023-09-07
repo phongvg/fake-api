@@ -31,7 +31,6 @@ class UserService {
   }
 
   async register(payload: RegisterReqBody) {
-    const { email, password } = payload
     await databaseService.connect()
     const newUser = new UserModel({
       ...payload,

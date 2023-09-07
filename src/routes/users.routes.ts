@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { loginController, registerController } from '~/controllers/users.controllers'
 import { registerValidator } from '~/middlewares/users.middlewares'
-const usersRouter = Router()
+import { wrapAsync } from '~/utils/handlers'
 
-usersRouter.post('/register', registerValidator, registerController)
+const usersRouter = Router()
+usersRouter.post('/register', registerValidator, wrapAsync(registerController))
 /**
  * path: /register method: POST body: {email, password}
  */
